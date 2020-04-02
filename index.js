@@ -12,24 +12,6 @@ const PORT = 4000;
 
 app.listen(PORT, () => console.log(`Express server currently running on port ${PORT}`));
 
-let accounts = [
-    {
-        "id": 1,
-        "username": "paulhal",
-        "role": "admin"
-    },
-    {
-        "id": 2,
-        "username": "johndoe",
-        "role": "guest"
-    },
-    {
-        "id": 3,
-        "username": "sarahjane",
-        "role": "guest"
-    }
-];
-
 app.get(`/users/`, (request, response) => {
     return handlers.getUsers(request, response);
 });
@@ -38,56 +20,22 @@ app.get(`/users/:id`, (request, response) => {
     return handlers.getUsersById(request, response);
 });
 
-
-
-
-app.get(`/accounts/:id`, (request, response) => {
-    const accountId = Number(request.params.id);
-    const getAccount = accounts.find((account) => account.id === accountId);
-
-    if (!getAccount) {
-        response.status(500).send('Account not found.')
-    } else {
-        response.json(getAccount);
-    }
+app.post(`/users`, (request, response) => {
+    return handlers.createUser(request, response);
 });
 
-app.post(`/accounts`, (request, response) => {
-    const incomingAccount = request.body;
-
-    accounts.push(incomingAccount);
-
-    response.json(accounts);
+app.put(`/users/:id`, (request, response) => {
+    return handlers.updateUser(request, response);
 });
 
-app.put(`/accounts/:id`, (request, response) => {
-    const accountId = Number(request.params.id);
-    const body = request.body;
-    const account = accounts.find((account) => account.id === accountId);
-    const index = accounts.indexOf(account);
-
-    if (!account) {
-        response.status(500).send('Account not found.');
-    } else {
-        const updatedAccount = { ...account, ...body };
-
-        accounts[index] = updatedAccount;
-
-        response.send(updatedAccount);
-    }
+app.delete(`/user/:id`, (request, response) => {
+    return handlers.deleteUser(request, response);
 });
 
-app.delete(`/accounts/:id`, (request, response) => {
-    const accountId = Number(request.params.id);
-    const newAccounts = accounts.filter((account) => account.id !== accountId);
 
-    if (!newAccounts) {
-        response.status(500).send('Account not found.');
-    } else {
-        accounts = newAccounts;
-        response.send(accounts);
-    }
-});
+
+
+
 
 
 
