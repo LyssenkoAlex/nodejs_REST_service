@@ -1,6 +1,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const dataStore = require('./src/dataStore.json')
 
 
 const app = express();
@@ -30,6 +31,8 @@ let accounts = [
 ];
 
 app.get(`/accounts`, (request, response) => {
+    console.log(dataStore.task)
+    console.log(dataStore.users)
     response.json(accounts);
 });
 
