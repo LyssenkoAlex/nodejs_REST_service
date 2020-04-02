@@ -1,7 +1,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const dataStore = require('./src/dataStore.json')
+const handlers = require('./src/api/api.js');
 
 
 const app = express();
@@ -30,11 +30,16 @@ let accounts = [
     }
 ];
 
-app.get(`/accounts`, (request, response) => {
-    console.log(dataStore.task)
-    console.log(dataStore.users)
-    response.json(accounts);
+app.get(`/users/`, (request, response) => {
+    return handlers.getUsers(request, response);
 });
+
+app.get(`/users/:id`, (request, response) => {
+    return handlers.getUsersById(request, response);
+});
+
+
+
 
 app.get(`/accounts/:id`, (request, response) => {
     const accountId = Number(request.params.id);
