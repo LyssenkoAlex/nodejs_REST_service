@@ -33,7 +33,7 @@
       "order": 3
     }
   ],
-  "board": [
+  "boards": [
     {
       "id": 1,
       "title": "blue board",
@@ -54,7 +54,7 @@
     {
     }
   ],
-  "task": [
+  "tasks": [
     {
       "id": 1,
       "title": "make header",

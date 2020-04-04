@@ -1,5 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-const dataStore = require("../data/dataStore.json");
+const dataStore = require("../../data/dataStore.json");
 
  function getUsers (request, response)  {
     return response.json(dataStore.users);
