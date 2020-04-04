@@ -18,15 +18,15 @@ app.get(`/users/`, (request, response) => {
     return handlersUsers.getUsers(request, response);
 });
 
-app.get(`/users/:id`, (request, response) => {
+app.get(`/user/:id`, (request, response) => {
     return handlersUsers.getUsersById(request, response);
 });
 
-app.post(`/users`, (request, response) => {
+app.post(`/user`, (request, response) => {
     return handlersUsers.createUser(request, response);
 });
 
-app.put(`/users/:id`, (request, response) => {
+app.put(`/user/:id`, (request, response) => {
     return handlersUsers.updateUser(request, response);
 });
 
@@ -38,19 +38,19 @@ app.get(`/boards/`, (request, response) => {
     return handlersBoards.getBoards(request, response);
 });
 
-app.get(`/boards/:id`, (request, response) => {
+app.get(`/board/:id`, (request, response) => {
     return handlersBoards.getBoardById(request, response);
 });
 
-app.post(`/boards`, (request, response) => {
+app.post(`/board`, (request, response) => {
     return handlersBoards.createBoard(request, response);
 });
 
-app.put(`/boards/:id`, (request, response) => {
+app.put(`/board/:id`, (request, response) => {
     return handlersBoards.updateBoard(request, response);
 });
 
-app.delete(`/boards/:id`, (request, response) => {
+app.delete(`/board/:id`, (request, response) => {
     return handlersBoards.deleteBoard(request, response);
 });
 
@@ -58,19 +58,19 @@ app.get(`/tasks/`, (request, response) => {
     return handlersTasks.getTasks(request, response);
 });
 
-app.get(`/tasks/:id`, (request, response) => {
+app.get(`/task/:id`, (request, response) => {
     return handlersTasks.getTaskById(request, response);
 });
 
-app.post(`/tasks`, (request, response) => {
+app.post(`/task`, (request, response) => {
     return handlersTasks.createTask(request, response);
 });
 
-app.put(`/tasks/:id`, (request, response) => {
+app.put(`/task/:id`, (request, response) => {
     return handlersTasks.updateTask(request, response);
 });
 
-app.delete(`/tasks/:id`, (request, response) => {
+app.delete(`/task/:id`, (request, response) => {
     return handlersTasks.deleteTask(request, response);
 });
 

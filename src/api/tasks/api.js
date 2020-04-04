@@ -20,7 +20,7 @@ function getTaskById (request, response)  {
 function createTask (request, response) {
     const incomingTask = request.body;
     incomingTask.id = uuidv4();
-    dataStore.users.push(incomingTask);
+    dataStore.tasks.push(incomingTask);
 
     response.status(200).json(dataStore.tasks);
 }
