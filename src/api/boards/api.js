@@ -29,7 +29,7 @@ function updateBoard(request, response) {
     const boardId = Number(request.params.id);
     const body = request.body;
     const board = dataStore.boards.find((board) => board.id === boardId);
-    const index = dataStore.users.indexOf(board);
+    const index = dataStore.boards.indexOf(board);
 
     if (!board) {
         response.status(500).send('Board not found.');
@@ -42,9 +42,13 @@ function updateBoard(request, response) {
 
 function deleteBoard(request, response) {
     const boardId = Number(request.params.id);
-    const newBoard = dataStore.users.filter((user) => user.id !== boardId);
-    dataStore.boards = [...newBoard] ;
 
+
+
+    const newBoard = dataStore.boards.filter((board) => board.id !== boardId);
+    dataStore.boards = [...newBoard] ;
+    const newTask = dataStore.tasks.filter((task) => task.boardId !== boardId);
+    dataStore.tasks = [...newTask];
     if (!newBoard) {
         response.status(500).send('Board not found.');
     } else {

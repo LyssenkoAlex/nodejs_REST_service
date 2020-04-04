@@ -44,7 +44,7 @@
       ]
     },
     {
-      "id": 1,
+      "id": 2,
       "title": "yellow board",
       "columns": [
         1,
@@ -68,11 +68,11 @@
       "order": 1,
       "description": "make header desc2",
       "userId": null,
-      "boardId": 1,
+      "boardId": 2,
       "columnId": 1
     },
     {
-      "id": 2,
+      "id": 3,
       "title": "make footer",
       "order": 1,
       "description": "make header desc3",

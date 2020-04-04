@@ -45,6 +45,9 @@ function deleteUser(request, response) {
     const userId = Number(request.params.id);
     const newUsers = dataStore.users.filter((user) => user.id !== userId);
     dataStore.users = [...newUsers] ;
+    dataStore.tasks.forEach((x) => {
+        if (x.userId === userId) {x.userId = null}
+    });
 
     if (!newUsers) {
         response.status(500).send('User not found.');
