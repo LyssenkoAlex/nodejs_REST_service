@@ -1,9 +1,12 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
-const handlersUsers = require('./src/api/users/api.js');
-const handlersBoards = require('./src/api/boards/api');
-const handlersTasks = require('./src/api/tasks/api.js');
+// const handlersUsers = require('./src/api/users/api.js');
+// const handlersBoards = require('./src/api/boards/api');
+// const handlersTasks = require('./src/api/tasks/api.js');
+const initializeDatabase = require('./src/db/connection')
+const routes = require('./src/routes')
+
 
 
 const app = express();
@@ -11,9 +14,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const PORT = 4000;
+initializeDatabase().then(connection => {
+    routes(app, connection).listen(PORT, () => console.log(`Express server currently running on port ${PORT}`));
 
-app.listen(PORT, () => console.log(`Express server currently running on port ${PORT}`));
+}).catch(err => {
+    console.log('Field to make connection');
+    console.error(err);
+    process.exit(1)
+})
 
+/*
 app.get(`/users/`, (request, response) => {
     return handlersUsers.getUsers(request, response);
 });
@@ -78,7 +88,7 @@ app.delete(`/task/:id`, (request, response) => {
 
 
 
-
+*/
 
 
 

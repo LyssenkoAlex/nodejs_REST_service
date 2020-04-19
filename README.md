@@ -13,4 +13,4 @@ https://www.postman.com/downloads/
 
 ## load config for postman 
 nodejs_task.postman_collection.json
-
+npm st

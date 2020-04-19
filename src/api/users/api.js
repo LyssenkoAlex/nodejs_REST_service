@@ -1,9 +1,18 @@
 const { v4: uuidv4 } = require('uuid');
 const dataStore = require("../../data/dataStore.json");
+const client = require("../../db/connection")
 
  function getUsers (request, response)  {
-    return response.json(dataStore.users);
-}
+    // return response.json(dataStore.users);
+     client.connect(err => {
+         const collection = client.db("boards").collection("");
+        if(err) throw err;
+         console.log(collection)
+         client.close();
+     });
+
+
+ }
 
 function getUsersById (request, response)  {
     const userId = Number(request.params.id);
